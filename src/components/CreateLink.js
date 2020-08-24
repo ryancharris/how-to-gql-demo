@@ -18,7 +18,7 @@ function CreateLink(props) {
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
 
-  const [createLink, { data }] = useMutation(POST_MUTATION, {
+  const [createLink] = useMutation(POST_MUTATION, {
     onCompleted: () => history.push("/"),
     onError: () => history.push("/"),
   });
