@@ -4,6 +4,8 @@ import "./styles/index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 import {
   createHttpLink,
   InMemoryCache,
@@ -21,9 +23,11 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Router>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Router>,
   document.getElementById("root")
 );
 

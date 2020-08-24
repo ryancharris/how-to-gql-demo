@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 import { gql, useMutation } from "@apollo/client";
 
 const POST_MUTATION = gql`
@@ -14,10 +14,14 @@ const POST_MUTATION = gql`
 `;
 
 function CreateLink(props) {
+  let history = useHistory();
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
 
-  const [createLink, { data }] = useMutation(POST_MUTATION);
+  const [createLink, { data }] = useMutation(POST_MUTATION, {
+    onCompleted: () => history.push("/"),
+    onError: () => history.push("/"),
+  });
 
   return (
     <div>
